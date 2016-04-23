@@ -1,0 +1,24 @@
+!  3-21G  EMSL  Basis Set Exchange Library   8/28/07 3:04 AM
+! Elements                             References
+! --------                             ----------
+!  H - Ne: J.S. Binkley, J.A. Pople, W.J. Hehre, J. Am. Chem. Soc 102 939 (1980)
+! Na - Ar: M.S. Gordon, J.S. Binkley, J.A. Pople, W.J. Pietro and W.J. Hehre, 
+!          J. Am. Chem. Soc. 104, 2797 (1983).
+!  K - Ca: K.D. Dobbs, W.J. Hehre, J. Comput. Chem. 7, 359 (1986). 
+! Ga - Kr: K.D. Dobbs, W.J. Hehre, J. Comput. Chem. 7, 359 (1986).
+! Sc - Zn: K.D. Dobbs, W.J. Hehre, J. Comput. Chem. 8, 861 (1987). 
+!  Y - Cd: K.D. Dobbs, W.J. Hehre, J. Comput. Chem. 8, 880 (1987). 
+! Cs     : A 3-21G quality set derived from the Huzinage MIDI basis sets.
+!          E.D. Glendening and D. Feller, J. Phys. Chem. 99, 3060 (1995)
+!   
+H     0 
+S     3     1.00 
+             0.168856              0.444635        
+             0.623913              0.535328        
+             3.42525               0.154329
+****
+He    0
+S       3       1.00
+            0.45958833          0.444635
+            1.698151635         0.535328
+            9.3227571           0.154329
