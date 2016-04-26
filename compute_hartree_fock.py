@@ -16,4 +16,4 @@ if __name__=='__main__':
     if (len(sys.argv) <3):
        print 'Usage %s  [molecule_file] [basis_set_file]'%sys.argv[0]
        exit(0)
-    compute_hartree_fock(sys.argv[2],sys.argv[3])
+    compute_hartree_fock(sys.argv[1],sys.argv[2])
