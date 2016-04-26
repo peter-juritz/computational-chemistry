@@ -328,7 +328,7 @@ class HartreeFock:
         for u in xrange(N):
             for v in xrange(N):
                 s = 0
-                for a in xrange(N_elec):
+                for a in xrange(N_elec): # TODO N_elec/2
                     s+=C[u][a] * C[v][a]
                 P[u][v] = 2*s
         return P
@@ -382,7 +382,7 @@ class HartreeFock:
         #print '----------- S(norm) -----------'
         #print self.overlap(self.aof)
         if (self.do_print ==1):
-                print '----------- S(arb)  -----------'
+                print '----------- Overlap Matrix S(arb)  -----------'
         self.S_arb = numpy.zeros((len(self.aof),len(self.aof)))
         p=0
         q=0
@@ -393,7 +393,7 @@ class HartreeFock:
               self.S_arb[v][u] = t
         if (self.do_print ==1):
                 print self.S_arb
-                print '-----------    T    -----------'
+                print '-----------   Kinetic Energy T    -----------'
         self.T = self.kinetic_integral(self.aof)
         if (self.do_print ==1):
                 print self.T
@@ -404,14 +404,14 @@ class HartreeFock:
                     t = self.nuclear(self.aof[n],self.aof[m],self.mol.atoms[i].xyz,self.mol.atoms[i].name)
                     self.V[i][n][m] =t
             if (self.do_print ==1):
-                    print '-----------    self.V ',i,'  -----------'
+                    print '-----------  Nuclear Attraction V [',i,']  -----------'
                     print self.V[i]
         self.H_core = numpy.zeros((self.N,self.N))
         self.H_core += self.T
         for i in xrange(self.mol.n_atoms):
             self.H_core+= self.V[i]
         if (self.do_print ==1):
-                print '-----------  Hcore  -----------'
+                print '-----------  Core Hamiltonian Hcore  -----------'
                 print self.H_core
         self.ERI = numpy.zeros( (self.N,self.N,self.N,self.N))
 
@@ -456,7 +456,10 @@ class HartreeFock:
         X = real(linalg.sqrtm(linalg.inv(S_arb)))
         Fd =  dot(dot(transpose(X),F),X)
         self.set_equal(C ,dot(X,linalg.eig(Fd )[1]),N) # I think this needs fixing
-        self.set_equal(P , self.density(aof,C,1),N) # fix n elec
+        # Note, the number of electrons is currently specified as a constant
+        # below - this needs to be treated properly to perform
+        # correct calculations on different molecules
+        self.set_equal(P , self.density(aof,C,1),N) #
 
         self.set_equal(G , (self.calc_G(P,ERI)),N)
         return E0
